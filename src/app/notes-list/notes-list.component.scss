@@ -1,0 +1,25 @@
+td .mat-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+}
+
+::ng-deep .mat-mdc-menu-panel {
+    .mat-mdc-menu-item {
+        min-height: 40px;
+    }
+
+    .mat-mdc-menu-item-text {
+        font-size: 14px !important;
+    }
+
+    .mat-icon {
+        width: 20px !important;
+        height: 20px !important;
+        font-size: 20px;
+    }
+}
+
+.content {
+    margin: 16px 0 16px 0;
+}

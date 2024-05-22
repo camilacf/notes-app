@@ -1,1 +1,68 @@
 /* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+@import '../node_modules/@syncfusion/ej2-base/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-icons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-lists/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-navigations/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import '../node_modules/@syncfusion/ej2-richtexteditor/styles/material.css';
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+$notepalette: (
+    50 : #e8f9f6,
+    100 : #c6efe9,
+    200 : #a0e4da,
+    300 : #7ad9cb,
+    400 : #5ed1bf,
+    500 : #41c9b4,
+    600 : #3bc3ad,
+    700 : #32bca4,
+    800 : #2ab59c,
+    900 : #1ca98c,
+    A100 : #e0fff8,
+    A200 : #adffed,
+    A400 : #7affe2,
+    A700 : #61ffdc,
+    contrast: (50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$note-primary: mat.define-palette($notepalette, 500);
+$note-accent: mat.define-palette(mat.$blue-grey-palette);
+$note-warn: mat.define-palette(mat.$red-palette);
+
+$note-theme: mat.define-light-theme((color: (primary: $note-primary,
+                accent: $note-accent,
+                warn: $note-warn,
+            ),
+        ));
+
+@include mat.all-component-themes($note-theme);

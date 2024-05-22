@@ -1,0 +1,31 @@
+<mat-drawer-container class="container">
+    <mat-drawer #editDrawer class="sidenav" mode="side" position="end">
+        <h2>{{editingNote ? 'Edit' : 'New'}} note
+            <button mat-icon-button (click)="close()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </h2>
+        <div class="sidenav-content">
+            <form [formGroup]="noteForm" (ngSubmit)="saveNote()">
+                <input formControlName="title" [placeholder]="'Title'" matInput>
+
+                <span class="editor">
+                    <ngx-editor-menu [editor]="editor" [toolbar]="toolbar">
+                    </ngx-editor-menu>
+                    <ngx-editor [placeholder]="'Content'" [editor]="editor" formControlName="content">
+                    </ngx-editor>
+                </span>
+
+                <button mat-flat-button color="primary" type="submit">
+                    Save
+                </button>
+            </form>
+        </div>
+    </mat-drawer>
+    <div class="sidenav-content">
+        <button type="button" color="primary" mat-flat-button (click)="editDrawer.open()">
+            Add note
+            <span>+</span>
+        </button>
+    </div>
+</mat-drawer-container>

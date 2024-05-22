@@ -1,0 +1,16 @@
+<mat-sidenav-container class="container" autosize>
+    <mat-sidenav #menuDrawer class="sidenav" mode="side">
+        <div class="drawer-top">
+            <img src="../../assets/note-logo.svg" width="150px" alt="">
+            <div class="btn-close" *ngIf="menuDrawer.opened" (click)="menuDrawer.toggle()">
+                <mat-icon>{{'keyboard_double_arrow_left'}}</mat-icon>
+            </div>
+        </div>
+        <div>lalala</div>
+    </mat-sidenav>
+    <div class="sidenav-content">
+        <button type="button" mat-icon-button *ngIf="!menuDrawer.opened" (click)="menuDrawer.toggle()">
+            <mat-icon>{{'keyboard_double_arrow_right'}}</mat-icon>
+        </button>
+    </div>
+</mat-sidenav-container>

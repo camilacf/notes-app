@@ -1,0 +1,50 @@
+:host {
+    display: flex;
+}
+
+.mat-drawer-container {
+    height: 100%;
+    display: flex;
+
+    .mat-mdc-icon-button,
+    ::ng-deep .mat-mdc-icon-button .mat-mdc-button-persistent-ripple {
+        border-radius: 20%;
+
+    }
+}
+
+.drawer-top {
+    display: flex;
+    align-items: center;
+
+    .btn-close {
+        padding: 10px;
+        line-height: 45%;
+        margin-left: 10px;
+        margin-right: -10px;
+        cursor: pointer;
+    }
+}
+
+.mat-drawer {
+    position: relative !important;
+    border-right: none;
+    background: whitesmoke;
+}
+
+::ng-deep {
+    .mat-drawer-inner-container {
+        overflow-x: clip !important;
+    }
+
+    .mat-drawer-content {
+        margin-left: 0 !important;
+        background-color: var(--mat-sidenav-container-background-color);
+
+        button {
+            margin-top: 25px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    }
+}

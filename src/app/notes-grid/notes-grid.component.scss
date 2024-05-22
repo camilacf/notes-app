@@ -1,0 +1,28 @@
+mat-card {
+    width: 90%;
+    height: 90%;
+    background: cornsilk;
+}
+
+mat-card-header {
+    justify-content: center;
+    padding: 8px 16px 8px 16px;
+}
+
+mat-card-content {
+    padding-top: 16px;
+}
+
+
+.action-buttons {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+
+    mat-icon {
+        width: 20px;
+        height: 20px;
+        font-size: 20px;
+    }
+
+}
