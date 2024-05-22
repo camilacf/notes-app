@@ -1,0 +1,4 @@
+<mat-form-field class="search" appearance="outline" *ngIf="searchType === 'text'">
+    <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+</mat-form-field>
+<app-tag-search (tagsChanged)="filterByTag($event)" *ngIf="searchType === 'tag'" [notes]="storedNotes"></app-tag-search>

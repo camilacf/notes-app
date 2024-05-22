@@ -22,6 +22,7 @@
     "@angular/router": "^17.3.0",
     "@syncfusion/ej2-angular-richtexteditor": "^25.2.5",
     "crypto-js": "^4.2.0",
+    "ngx-colors": "^3.6.0",
     "ngx-editor": "^17.5.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

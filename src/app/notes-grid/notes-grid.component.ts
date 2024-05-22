@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { LocalStorageService } from '../shared/local-storage.service';
 import { Observable } from 'rxjs';
 import { Note } from '../shared/note.model';
@@ -13,6 +13,7 @@ import { EditService } from '../shared/edit.service';
 import { SafeHtmlPipe } from '../shared/safe-html.pipe';
 import { DeleteDialogComponent } from '../shared/delete-dialog/delete-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DatePipe } from '../shared/date.pipe';
 
 @Component({
   selector: 'app-notes-grid',
@@ -24,13 +25,15 @@ import { MatDialog } from '@angular/material/dialog';
     MatDividerModule,
     MatIconModule,
     MatButtonModule,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    DatePipe
   ],
   templateUrl: './notes-grid.component.html',
   styleUrl: './notes-grid.component.scss'
 })
 export class NotesGridComponent {
   $notes: Observable<Note[]>;
+  @Input() gridConfig: { row: number, size: string };
 
   constructor(private storageService: LocalStorageService, private editService: EditService, private dialog: MatDialog) { }
 

@@ -1,0 +1,20 @@
+<mat-form-field class="search" [ngClass]="{'editing': canAdd, 'chip': selectedTags.length > 0}" appearance="outline">
+    <mat-chip-grid #chipGrid aria-label="tag-search">
+        @for (tag of selectedTags; track tag) {
+        <mat-chip-row [style.background-color]="tag.color" (removed)="remove(tag)" ngx-colors-trigger
+            [(ngModel)]="tag.color" (change)="colorChanged()">
+            {{tag.title}}
+            <button matChipRemove [attr.aria-label]="'remove ' + tag.title">
+                <mat-icon>cancel</mat-icon>
+            </button>
+        </mat-chip-row>
+        }
+    </mat-chip-grid>
+    <input placeholder="Search tag" #fruitInput [formControl]="tagSearch" [matChipInputFor]="chipGrid"
+        [matAutocomplete]="auto" (matChipInputTokenEnd)="add($event)" />
+    <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        @for (tag of filteredTags | async; track tag) {
+        <mat-option [value]="tag">{{tag.title}}</mat-option>
+        }
+    </mat-autocomplete>
+</mat-form-field>

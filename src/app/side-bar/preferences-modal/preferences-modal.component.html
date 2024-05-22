@@ -1,0 +1,35 @@
+<div class="header">
+    <h2 mat-dialog-title>Preferences</h2>
+    <button mat-icon-button mat-dialog-close>
+        <mat-icon>close</mat-icon>
+    </button>
+</div>
+<mat-dialog-content>
+    <div class="filter">
+        Filter by:
+        <mat-form-field appearance="outline">
+            <mat-select [(ngModel)]="config.filter">
+                <mat-option value="text">Search text</mat-option>
+                <mat-option value="tag">Tags</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="grid">
+        <div class="label">Grid view preferences</div>
+        <div class="row">
+            Notes per row:
+            <mat-form-field appearance="outline">
+                <input matInput [(ngModel)]="config.grid.row" type="number">
+            </mat-form-field>
+        </div>
+        <div class="size">
+            Note size:
+            <mat-button-toggle-group appearance="standard" [(ngModel)]="config.grid.size" aria-label="Note size">
+                <mat-button-toggle value="1:1">1:1</mat-button-toggle>
+                <mat-button-toggle value="1:2">1:2</mat-button-toggle>
+                <mat-button-toggle value="3:4">3:4</mat-button-toggle>
+                <mat-button-toggle value="4:5">4:5</mat-button-toggle>
+            </mat-button-toggle-group>
+        </div>
+    </div>
+</mat-dialog-content>

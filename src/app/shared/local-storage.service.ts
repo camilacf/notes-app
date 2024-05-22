@@ -33,9 +33,8 @@ export class LocalStorageService {
     for (let key of Object.keys(localStorage)) {
       if (key.startsWith('note-')) {
         const json = localStorage.getItem(key) || '';
-        console.log(this.decrypt(json))
         const details = JSON.parse(this.decrypt(json));
-        notes.push(new Note(details));
+        notes.push(details as Note);
       }
     }
     return notes;

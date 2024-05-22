@@ -6,7 +6,9 @@
                 <mat-icon>{{'keyboard_double_arrow_left'}}</mat-icon>
             </div>
         </div>
-        <div>lalala</div>
+        <mat-list role="list">
+            <mat-list-item role="listitem" (click)="openPreferences()">Preferences</mat-list-item>
+        </mat-list>
     </mat-sidenav>
     <div class="sidenav-content">
         <button type="button" mat-icon-button *ngIf="!menuDrawer.opened" (click)="menuDrawer.toggle()">

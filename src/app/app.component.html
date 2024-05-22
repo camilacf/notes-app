@@ -10,11 +10,11 @@
         <mat-icon>menu</mat-icon>
       </mat-button-toggle>
     </mat-button-toggle-group>
-    <input matInput (keyup)="applyFilter($event)" placeholder="Search" #input>
+    <app-filters [style.flex-grow]="1" [searchType]="config.filter"></app-filters>
   </div>
   <div class="content">
     <app-notes-list *ngIf="apperance === 'list'"></app-notes-list>
-    <app-notes-grid *ngIf="apperance === 'grid'"></app-notes-grid>
+    <app-notes-grid *ngIf="apperance === 'grid'" [gridConfig]="config.grid"></app-notes-grid>
   </div>
 </div>
 <app-edit-note></app-edit-note>

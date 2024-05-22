@@ -1,0 +1,17 @@
+::ng-deep .search {
+    width: 100%;
+
+    &:not(.chip) .mat-mdc-text-field-wrapper {
+        height: 42px;
+    }
+
+    .mat-mdc-form-field-subscript-wrapper {
+        height: 0;
+    }
+
+    .mdc-text-field--outlined .mat-mdc-form-field-infix,
+    .mdc-text-field--no-label .mat-mdc-form-field-infix {
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+}

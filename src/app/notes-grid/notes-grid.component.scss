@@ -11,18 +11,39 @@ mat-card-header {
 
 mat-card-content {
     padding-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 100%;
 }
 
+.footer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: -5px !important;
+}
+
+.details {
+
+    p {
+        margin: 0;
+        font-size: 12px;
+    }
+}
+
+.tag-list {
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+}
 
 .action-buttons {
-    position: absolute;
-    bottom: 5px;
-    right: 5px;
+    display: flex;
+    flex-direction: row;
 
     mat-icon {
         width: 20px;
         height: 20px;
         font-size: 20px;
     }
-
 }

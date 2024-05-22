@@ -48,3 +48,15 @@
         }
     }
 }
+
+.mat-mdc-list-base {
+    margin-top: 15px;
+
+    mat-list-item {
+        cursor: pointer;
+
+        &:hover {
+            background-color: lightgray;
+        }
+    }
+}

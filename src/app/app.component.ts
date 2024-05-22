@@ -4,7 +4,7 @@ import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { SideBarComponent } from './side-bar/side-bar.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { EditNoteComponent } from './edit-note/edit-note.component';
 import { NotesListComponent } from './notes-list/notes-list.component';
 import { CommonModule } from '@angular/common';
@@ -12,6 +12,8 @@ import { FormsModule } from '@angular/forms';
 import { NotesGridComponent } from './notes-grid/notes-grid.component';
 import { LocalStorageService } from './shared/local-storage.service';
 import { Note } from './shared/note.model';
+import { Pref, PreferencesService } from './side-bar/preferences.service';
+import { FiltersComponent } from './filters/filters.component';
 
 @Component({
   selector: 'app-root',
@@ -26,7 +28,9 @@ import { Note } from './shared/note.model';
     EditNoteComponent,
     SideBarComponent,
     NotesListComponent,
-    NotesGridComponent
+    NotesGridComponent,
+    MatAutocompleteModule,
+    FiltersComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
@@ -34,23 +38,13 @@ import { Note } from './shared/note.model';
 export class AppComponent {
   title = 'notes-app';
   apperance: 'grid' | 'list' = 'list';
-  storedNotes: Note[];
-  @ViewChild('input') filterInput: ElementRef<HTMLInputElement>;
-  constructor(private storageService: LocalStorageService) { }
+  config: Pref;
+  constructor(private preferenceService: PreferencesService) { }
 
   ngOnInit() {
-    this.storageService.storedNotes.subscribe(notes => {
-      this.storedNotes = notes;
-      this.filterInput.nativeElement.value = '';
+    this.preferenceService.preferences.subscribe(pref => {
+      this.config = pref;
     });
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    let filteredList = this.storedNotes.filter(note => {
-      console.log(note, JSON.stringify(note), filterValue)
-      return filterValue !== '' ? JSON.stringify(note).includes(filterValue) : true;
-    })
-    this.storageService.notesSub.next(filteredList);
-  }
 }

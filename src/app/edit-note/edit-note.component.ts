@@ -10,6 +10,8 @@ import { LocalStorageService } from '../shared/local-storage.service';
 import { EditService } from '../shared/edit.service';
 import { MatIconModule } from '@angular/material/icon';
 import { Editor, NgxEditorModule, Toolbar, toHTML } from 'ngx-editor';
+import { TagSearchComponent } from '../shared/tag-search/tag-search.component';
+import { Tag } from '../shared/tag.model';
 
 @Component({
   selector: 'app-edit-note',
@@ -21,7 +23,8 @@ import { Editor, NgxEditorModule, Toolbar, toHTML } from 'ngx-editor';
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
-    NgxEditorModule
+    NgxEditorModule,
+    TagSearchComponent
   ],
   templateUrl: './edit-note.component.html',
   styleUrl: './edit-note.component.scss'
@@ -29,7 +32,7 @@ import { Editor, NgxEditorModule, Toolbar, toHTML } from 'ngx-editor';
 export class EditNoteComponent implements OnInit {
   editingNote: Note | null;
   noteForm: FormGroup;
-
+  storedNotes: Note[];
   editor: Editor;
   toolbar: Toolbar = [
     ['bold', 'italic'],
@@ -42,9 +45,13 @@ export class EditNoteComponent implements OnInit {
     ['align_left', 'align_center', 'align_right', 'align_justify'],
   ];
   @ViewChild('editDrawer') drawer: MatDrawer;
+  noteTags: Tag[];
   constructor(private fb: FormBuilder, private storageService: LocalStorageService, private editService: EditService) { }
 
   ngOnInit() {
+    this.storageService.storedNotes.subscribe(notes => {
+      this.storedNotes = notes;
+    });
     this.editor = new Editor({ attributes: { 'placeholder': 'Content' } });
 
     this.noteForm = this.fb.group({
@@ -66,6 +73,7 @@ export class EditNoteComponent implements OnInit {
       content: this.noteForm.value.content,
       createdAt: this.editingNote?.createdAt || Date(),
       lastUpdated: Date(),
+      tags: this.noteTags
     }
     this.storageService.setNote(note.id, JSON.stringify(note));
     this.noteForm.patchValue({ title: '', content: '' })
@@ -78,4 +86,5 @@ export class EditNoteComponent implements OnInit {
     this.editingNote = null;
     this.drawer.close()
   }
+
 }

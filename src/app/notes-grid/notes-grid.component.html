@@ -1,4 +1,4 @@
-<mat-grid-list cols="3" rowHeight="4:5">
+<mat-grid-list [cols]="gridConfig.row" [rowHeight]="gridConfig.size">
     <mat-grid-tile *ngFor="let n of $notes | async">
         <mat-card>
             <mat-card-header>
@@ -7,13 +7,25 @@
             <mat-divider></mat-divider>
             <mat-card-content>
                 <div [innerHTML]="n.content | safeHtml"></div>
-                <div class="action-buttons">
-                    <button class="edit-button" mat-icon-button (click)="editNote(n)">
-                        <mat-icon>edit</mat-icon>
-                    </button>
-                    <button class="delete-button" mat-icon-button (click)="deleteNote(n)">
-                        <mat-icon>delete</mat-icon>
-                    </button>
+                <div>
+                    <div class="tag-list">
+                        <div class="tag" *ngFor="let tag of n.tags" [ngStyle]="{'background-color': tag.color}">
+                            {{tag.title}}</div>
+                    </div>
+                    <div class="footer">
+                        <div class="details">
+                            <p>Created: {{n.createdAt | date}}</p>
+                            <p>Last update: {{n.lastUpdated | date}}</p>
+                        </div>
+                        <div class="action-buttons">
+                            <button class="edit-button" mat-icon-button (click)="editNote(n)">
+                                <mat-icon>edit</mat-icon>
+                            </button>
+                            <button class="delete-button" mat-icon-button (click)="deleteNote(n)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
             </mat-card-content>
