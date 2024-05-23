@@ -34,6 +34,7 @@ export class TagSearchComponent implements OnInit, OnChanges {
   filteredTags: Observable<Tag[]>;
   @Input() canAdd: boolean = false;
   @Input() notes: Note[];
+  @Input() selectedList: Tag[];
   @Output() tagsChanged = new EventEmitter<Tag[]>();
 
   constructor(private tagService: TagsService) { }
@@ -50,6 +51,10 @@ export class TagSearchComponent implements OnInit, OnChanges {
 
   ngOnChanges(): void {
     this.tags = this.tagService.getTags(this.notes);
+    if (this.selectedList) {
+      this.selectedTags = this.selectedList.slice();
+      this.selectionChange();
+    }
   }
 
   remove(tag: Tag) {

@@ -33,6 +33,7 @@ export class EditNoteComponent implements OnInit {
   editingNote: Note | null;
   noteForm: FormGroup;
   storedNotes: Note[];
+  tagsSelected: Tag[];
   editor: Editor;
   toolbar: Toolbar = [
     ['bold', 'italic'],
@@ -61,7 +62,8 @@ export class EditNoteComponent implements OnInit {
 
     this.editService.triggerEdit.subscribe(noteToEdit => {
       this.editingNote = noteToEdit;
-      this.noteForm.patchValue(this.editingNote)
+      this.noteForm.patchValue(this.editingNote);
+      this.tagsSelected = this.editingNote.tags;
       this.drawer.open();
     })
   }

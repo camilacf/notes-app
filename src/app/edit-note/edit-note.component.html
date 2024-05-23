@@ -15,8 +15,8 @@
                     <ngx-editor [placeholder]="'Content'" [editor]="editor" formControlName="content">
                     </ngx-editor>
                 </span>
-                <app-tag-search (tagsChanged)="noteTags = $event" [notes]="storedNotes"
-                    [canAdd]="true"></app-tag-search>
+                <app-tag-search (tagsChanged)="noteTags = $event" [notes]="storedNotes" [canAdd]="true"
+                    [selectedList]="tagsSelected"></app-tag-search>
 
                 <button mat-flat-button color="primary" type="submit">
                     Save
