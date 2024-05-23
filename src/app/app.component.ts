@@ -37,7 +37,7 @@ import { FiltersComponent } from './filters/filters.component';
 })
 export class AppComponent {
   title = 'notes-app';
-  apperance: 'grid' | 'list' = 'list';
+  apperance: 'grid' | 'list' = 'grid';
   config: Pref;
   constructor(private preferenceService: PreferencesService) { }
 
